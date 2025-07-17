@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actogeam Messenger - Скачать бесплатно</title>
+    <meta name="description" content="Скачайте Actogeam Messenger - современное решение для безопасного общения. Доступно для Android и Windows на любом железе.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .phone-mockup {
+            position: relative;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .phone-frame {
+            background: #1a1a1a;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: rotate(5deg);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 500px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: url('/attached_assets/image_1752747325706.png') center/cover;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .download-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .download-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-card p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #667eea;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Actogeam Messenger</h1>
+            <p>Современное решение для безопасного общения с расширенными возможностями шифрования</p>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Общайтесь <span style="color: #FFD700;">быстрее</span> и безопаснее</h2>
+                <p>Мгновенный обмен сообщениями, видеозвонки, групповые чаты и многое другое. Работает на любом устройстве.</p>
+                
+                <div class="buttons">
+                    <a href="#" class="btn btn-primary" onclick="startDownload('android')">
+                        🤖 Скачать для Android
+                    </a>
+                    <a href="#" class="btn btn-secondary" onclick="startDownload('windows')">
+                        🪟 Скачать для Windows
+                    </a>
+                </div>
+            </div>
+            
+            <div class="phone-mockup">
+                <div class="phone-frame">
+                    <div class="phone-screen"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <h2 style="color: white; text-align: center; margin-bottom: 1rem;">Скачайте прямо сейчас</h2>
+            <p style="color: rgba(255,255,255,0.9); text-align: center;">Доступно для всех популярных платформ</p>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Android</h3>
+                    <p>Android 6.0 или новее<br>45 МБ</p>
+                    <a href="#" class="btn btn-primary" onclick="startDownload('android')">Скачать</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="feature-icon">🪟</div>
+                    <h3>Windows</h3>
+                    <p>Windows 10/11 (любое железо)<br>85 МБ</p>
+                    <a href="#" class="btn btn-primary" onclick="startDownload('windows')">Скачать</a>
+                </div>
+                
+                <div class="download-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Универсальная версия</h3>
+                    <p>Работает на любом устройстве<br>12 МБ</p>
+                    <a href="#" class="btn btn-primary" onclick="startDownload('universal')">Скачать</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>End-to-End шифрование</h3>
+                <p>Все сообщения защищены современными алгоритмами шифрования. Только вы и получатель можете их прочитать.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Молниеносная скорость</h3>
+                <p>Оптимизированная архитектура обеспечивает мгновенную доставку сообщений в любую точку мира.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Групповые чаты</h3>
+                <p>Создавайте группы до 100,000 участников с расширенными возможностями модерации.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <h3>Обмен файлами</h3>
+                <p>Отправляйте файлы любого формата размером до 2 ГБ с возможностью предпросмотра.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📹</div>
+                <h3>Видеозвонки</h3>
+                <p>Качественные видеозвонки и конференции с поддержкой до 1000 участников.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>Умные боты</h3>
+                <p>Интегрируйте полезных ботов для автоматизации задач и повышения продуктивности.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2024 Actogeam Messenger. Все права защищены.</p>
+            <p>Скачано более 15 миллионов раз • Рейтинг 4.8★</p>
+        </footer>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <h3>Скачивание началось!</h3>
+            <p id="downloadInfo">Actogeam Messenger для Android</p>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <p id="progressText">0% завершено</p>
+            <button class="btn btn-primary" onclick="closeModal()" style="margin-top: 1rem;">Закрыть</button>
+        </div>
+    </div>
+
+    <script>
+        const platformNames = {
+            'android': 'Android',
+            'windows': 'Windows',
+            'universal': 'Универсальная версия'
+        };
+
+        function startDownload(platform) {
+            const modal = document.getElementById('downloadModal');
+            const downloadInfo = document.getElementById('downloadInfo');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            downloadInfo.textContent = `Actogeam Messenger для ${platformNames[platform]}`;
+            modal.style.display = 'flex';
+            
+            // Simulate download progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    progressText.textContent = 'Скачивание завершено!';
+                    
+                    // Track download
+                    fetch('/api/download/' + platform, {
+                        method: 'GET'
+                    }).catch(console.error);
+                }
+                
+                progressFill.style.width = progress + '%';
+                progressText.textContent = Math.round(progress) + '% завершено';
+            }, 100);
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('downloadModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
