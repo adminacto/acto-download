@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import { Download, Play, Shield, Zap, Users } from "lucide-react";
+import { Download, Play, Shield, Zap, Users, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import DownloadModal from "./download-modal";
+import phoneInterfaceImage from "@assets/image_1752747325706.png";
 
 export default function Hero() {
   const [showDownloadModal, setShowDownloadModal] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState("windows");
 
   return (
     <section className="pt-24 pb-16 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
@@ -38,22 +40,41 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Button 
-                onClick={() => setShowDownloadModal(true)}
-                className="bg-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-indigo-700 transition-all duration-200 transform hover:scale-105"
-                size="lg"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Download className="mr-2" size={20} />
-                Скачать для Windows
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-2 border-indigo-600 text-indigo-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-indigo-50 transition-colors"
-                size="lg"
+                <Button 
+                  onClick={() => {
+                    setSelectedPlatform("windows");
+                    setShowDownloadModal(true);
+                  }}
+                  className="bg-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl btn-hover-lift"
+                  size="lg"
+                >
+                  <Download className="mr-2" size={20} />
+                  Скачать для Windows
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Play className="mr-2" size={20} />
-                Посмотреть демо
-              </Button>
+                <Button 
+                  onClick={() => {
+                    setSelectedPlatform("android");
+                    setShowDownloadModal(true);
+                  }}
+                  variant="outline"
+                  className="border-2 border-indigo-600 text-indigo-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-indigo-50 transition-all duration-200 shadow-lg hover:shadow-xl btn-hover-lift"
+                  size="lg"
+                >
+                  <Smartphone className="mr-2" size={20} />
+                  Скачать для Android
+                </Button>
+              </motion.div>
             </motion.div>
             
             <motion.div 
@@ -84,7 +105,7 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              {/* Phone mockup with app interface */}
+              {/* Phone mockup with real app interface */}
               <motion.div 
                 className="mx-auto w-64 h-128 bg-gray-900 rounded-3xl p-2 shadow-2xl"
                 animate={{ 
@@ -96,55 +117,12 @@ export default function Hero() {
                   ease: "easeInOut"
                 }}
               >
-                <div className="w-full h-full bg-white rounded-2xl overflow-hidden">
-                  {/* App interface mockup */}
-                  <div className="bg-indigo-600 p-4 flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <div className="w-4 h-4 bg-indigo-600 rounded-full"></div>
-                      </div>
-                      <div>
-                        <div className="text-white font-semibold text-sm">Анна Иванова</div>
-                        <div className="text-indigo-200 text-xs">в сети</div>
-                      </div>
-                    </div>
-                    <div className="w-1 h-4 bg-white/30 rounded-full"></div>
-                  </div>
-                  
-                  {/* Messages */}
-                  <div className="p-4 space-y-4 h-80 overflow-hidden">
-                    <div className="flex justify-start">
-                      <div className="bg-gray-100 rounded-2xl px-4 py-2 max-w-xs">
-                        <p className="text-sm">Привет! Как дела?</p>
-                        <p className="text-xs text-gray-500 mt-1">14:30</p>
-                      </div>
-                    </div>
-                    <div className="flex justify-end">
-                      <div className="bg-indigo-600 text-white rounded-2xl px-4 py-2 max-w-xs">
-                        <p className="text-sm">Отлично! Работаю над новым проектом</p>
-                        <p className="text-xs text-indigo-200 mt-1">14:32</p>
-                      </div>
-                    </div>
-                    <div className="flex justify-start">
-                      <div className="bg-gray-100 rounded-2xl px-4 py-2 max-w-xs">
-                        <p className="text-sm">Звучит интересно! Расскажешь?</p>
-                        <p className="text-xs text-gray-500 mt-1">14:33</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Input */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-gray-100 rounded-2xl flex items-center p-2">
-                    <input 
-                      type="text" 
-                      placeholder="Написать сообщение..." 
-                      className="flex-1 bg-transparent outline-none text-sm px-2"
-                      disabled
-                    />
-                    <button className="bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center">
-                      <div className="w-3 h-3 bg-white rounded-sm transform rotate-45"></div>
-                    </button>
-                  </div>
+                <div className="w-full h-full rounded-2xl overflow-hidden">
+                  <img 
+                    src={phoneInterfaceImage} 
+                    alt="Actogeam Messenger Interface" 
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
                 </div>
               </motion.div>
               
@@ -188,7 +166,7 @@ export default function Hero() {
         <DownloadModal 
           isOpen={showDownloadModal}
           onClose={() => setShowDownloadModal(false)}
-          platform="windows"
+          platform={selectedPlatform}
         />
       )}
     </section>

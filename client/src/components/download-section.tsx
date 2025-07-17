@@ -6,25 +6,25 @@ import DownloadModal from "./download-modal";
 
 const platforms = [
   {
+    name: "Android",
+    icon: "🤖",
+    requirement: "Android 6.0 или новее",
+    size: "45 МБ",
+    platform: "android"
+  },
+  {
     name: "Windows",
     icon: "🪟",
-    requirement: "Windows 10/11 (64-bit)",
+    requirement: "Windows 10/11 (любое железо)",
     size: "85 МБ",
     platform: "windows"
   },
   {
-    name: "macOS",
-    icon: "🍎",
-    requirement: "macOS 10.15 или новее",
-    size: "92 МБ",
-    platform: "macos"
-  },
-  {
-    name: "Linux",
-    icon: "🐧",
-    requirement: "Ubuntu 18.04+, Debian 10+",
-    size: "78 МБ",
-    platform: "linux"
+    name: "Универсальная версия",
+    icon: "🌐",
+    requirement: "Работает на любом устройстве",
+    size: "12 МБ",
+    platform: "universal"
   }
 ];
 
@@ -64,13 +64,19 @@ export default function DownloadSection() {
               <div className="text-4xl mb-4">{platform.icon}</div>
               <h3 className="text-xl font-semibold mb-3">{platform.name}</h3>
               <p className="text-sm text-indigo-100 mb-6">{platform.requirement}</p>
-              <Button 
-                onClick={() => handleDownload(platform.platform)}
-                className="bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors w-full"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Download className="mr-2" size={16} />
-                Скачать ({platform.size})
-              </Button>
+                <Button 
+                  onClick={() => handleDownload(platform.platform)}
+                  className="bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl btn-hover-lift w-full"
+                >
+                  <Download className="mr-2" size={16} />
+                  Скачать ({platform.size})
+                </Button>
+              </motion.div>
             </motion.div>
           ))}
         </div>
@@ -84,26 +90,40 @@ export default function DownloadSection() {
         >
           <p className="text-indigo-100 mb-4">Также доступно для мобильных устройств</p>
           <div className="flex justify-center space-x-4">
-            <Button 
-              variant="outline"
-              className="bg-black text-white border-black hover:bg-gray-800"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Apple className="mr-2" size={20} />
-              <div className="text-left">
-                <div className="text-xs">Скачать в</div>
-                <div className="text-sm font-semibold">App Store</div>
-              </div>
-            </Button>
-            <Button 
-              variant="outline"
-              className="bg-black text-white border-black hover:bg-gray-800"
+              <Button 
+                onClick={() => handleDownload("ios")}
+                variant="outline"
+                className="bg-black text-white border-black hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <Apple className="mr-2" size={20} />
+                <div className="text-left">
+                  <div className="text-xs">Скачать в</div>
+                  <div className="text-sm font-semibold">App Store</div>
+                </div>
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Smartphone className="mr-2" size={20} />
-              <div className="text-left">
-                <div className="text-xs">Скачать в</div>
-                <div className="text-sm font-semibold">Google Play</div>
-              </div>
-            </Button>
+              <Button 
+                onClick={() => handleDownload("android")}
+                variant="outline"
+                className="bg-black text-white border-black hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <Smartphone className="mr-2" size={20} />
+                <div className="text-left">
+                  <div className="text-xs">Скачать в</div>
+                  <div className="text-sm font-semibold">Google Play</div>
+                </div>
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </div>

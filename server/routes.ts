@@ -73,11 +73,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
     // In a real implementation, this would serve the actual file
     // For demo purposes, we'll just return a success response
+    const getFileExtension = (platform: string) => {
+      switch (platform) {
+        case 'windows': return 'exe';
+        case 'macos': return 'dmg';
+        case 'linux': return 'AppImage';
+        case 'android': return 'apk';
+        case 'ios': return 'ipa';
+        case 'universal': return 'zip';
+        default: return 'exe';
+      }
+    };
+    
+    const getFileSize = (platform: string) => {
+      switch (platform) {
+        case 'windows': return '85 MB';
+        case 'macos': return '92 MB';
+        case 'linux': return '78 MB';
+        case 'android': return '45 MB';
+        case 'ios': return '48 MB';
+        case 'universal': return '12 MB';
+        default: return '85 MB';
+      }
+    };
+    
     res.json({ 
       message: "Download started", 
       platform,
-      filename: `actogeam-${platform}-1.0.0.${platform === 'windows' ? 'exe' : platform === 'macos' ? 'dmg' : 'AppImage'}`,
-      size: platform === 'windows' ? '85 MB' : platform === 'macos' ? '92 MB' : '78 MB'
+      filename: `actogeam-${platform}-1.0.0.${getFileExtension(platform)}`,
+      size: getFileSize(platform)
     });
   });
 

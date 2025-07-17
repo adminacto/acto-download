@@ -68,7 +68,10 @@ export default function DownloadModal({ isOpen, onClose, platform }: DownloadMod
   const platformNames = {
     windows: "Windows",
     macos: "macOS",
-    linux: "Linux"
+    linux: "Linux",
+    android: "Android",
+    universal: "Универсальная версия",
+    ios: "iOS"
   };
 
   useEffect(() => {

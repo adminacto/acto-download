@@ -63,6 +63,8 @@ export class MemStorage implements IStorage {
       ...insertDownload,
       id,
       createdAt: new Date(),
+      userAgent: insertDownload.userAgent || null,
+      ipAddress: insertDownload.ipAddress || null,
     };
     this.downloads.set(id, download);
     return download;

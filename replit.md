@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack landing page application for Actogeam Messenger, a messaging application. The project is built with a React frontend and Express backend, featuring download tracking, user feedback collection, and a modern, responsive design.
+This is a full-stack landing page application for Actogeam Messenger, a messaging application. The project is built with a React frontend and Express backend, featuring download tracking, user feedback collection, and a modern, responsive design. The website now focuses on Android and Windows platforms with universal cross-platform support, featuring animated buttons and real app interface screenshots.
 
 ## User Preferences
 
